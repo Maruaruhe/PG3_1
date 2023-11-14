@@ -1,5 +1,5 @@
 #include <Novice.h>
-#include "StageScene.h"
+#include "GameManager.h"
 const char kWindowTitle[] = "学籍番号";
 
 // Windowsアプリでのエントリーポイント(main関数)
@@ -10,21 +10,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// キー入力結果を受け取る箱
 
-	StageScene game;
-	game.Initialize();
+	//StageScene game;
+	//game.Initialize();
 
-	// ウィンドウの×ボタンが押されるまでループ
-	while (Novice::ProcessMessage() == 0) {
-		// フレームの開始
-		Novice::BeginFrame();
-
-		// キー入力を受け取る
+	GameManager* gameManager = new GameManager;
 
 
 		///
 		/// ↓更新処理ここから
 		///
-		game.Updata();
+		gameManager->Run();
 		///
 		/// ↑更新処理ここまで
 		///
@@ -32,19 +27,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
-		game.Draw();
+		//game.Draw();
 		///
 		/// ↑描画処理ここまで
 		///
 
-		// フレームの終了
-		Novice::EndFrame();
-
-		// ESCキーが押されたらループを抜ける
-		/*if (preKeys[DIK_ESCAPE] == 0 && keys[DIK_ESCAPE] != 0) {
-			break;
-		}*/
-	}
 
 	// ライブラリの終了
 	Novice::Finalize();

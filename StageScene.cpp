@@ -1,5 +1,4 @@
 #include "StageScene.h"
-#include <Novice.h>
 
 void StageScene::Initialize() {
 	enemy.position = { 640,200 };
@@ -14,10 +13,7 @@ void StageScene::Initialize() {
 	bullet.isShot = false;
 }
 
-void StageScene::Updata() {
-	memcpy(preKeys, keys, 256);
-	Novice::GetHitKeyStateAll(keys);
-
+void StageScene::Updata(char keys[256], char preKeys[256]) {
 	if (keys[DIK_A]) {
 		player.position.x -= 3;
 	}
@@ -25,7 +21,7 @@ void StageScene::Updata() {
 		player.position.x += 3;
 	}
 
-	if (keys[DIK_SPACE] && !bullet.isShot) {
+	if (keys[DIK_SPACE] && !preKeys[DIK_SPACE] && !bullet.isShot) {
 		bullet.isShot = true;
 		bullet.position = player.position;
 	}

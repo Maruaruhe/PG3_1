@@ -15,6 +15,9 @@ public:
 private:
 	IScene* iScene;
 
+	char keys[256] = { 0 };
+	char preKeys[256] = { 0 };
+
 	std::unique_ptr<IScene> sceneArr_[3];
 
 	int currentSceneNo_;
