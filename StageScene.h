@@ -1,5 +1,6 @@
 #pragma once
 #include "IScene.h"
+#include "Player.h"
 
 class StageScene :public IScene
 {
@@ -13,16 +14,6 @@ private:
 		bool isAlive;
 		float radius;
 	};
-	struct Player {
-		Vector2 position;
-		float radius;
-	};
-	struct Bullet {
-		Vector2 position;
-		bool isShot;
-		float radius;
-	};
 	Enemy enemy;
 	Player player;
-	Bullet bullet;
 };
