@@ -1,6 +1,8 @@
 #pragma once
 #include "IScene.h"
 #include "Player.h"
+#include "InputHandler.h"
+#include <memory>
 
 class StageScene :public IScene
 {
@@ -14,6 +16,10 @@ private:
 		bool isAlive;
 		float radius;
 	};
-	Enemy enemy;
-	Player player;
+
+	std::unique_ptr<Enemy> enemy_;
+	std::unique_ptr<Player> player_;
+	std::unique_ptr<InputHandler> inputHandler_;
+
+	ICommand* command_;
 };
